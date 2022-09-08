@@ -22,14 +22,14 @@ public class StudentResource {
     private UserService userService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<User>> getAllEmployees() {
+    public ResponseEntity<List<User>> getAllUser() {
         List<User> employees = userService.findAllUser();
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 
     @GetMapping("/find/{id}")
-    public ResponseEntity<User> getEmployeeById(@PathVariable("id") Integer id) {
-        User user = userService.findEmployeeById(id);
+    public ResponseEntity<User> getUserById(@PathVariable("id") Integer id) {
+        User user = userService.findUserById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 

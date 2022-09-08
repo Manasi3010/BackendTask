@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "UserCompany")
-public class UserCompnay {
+public class UserCompany {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -107,10 +107,10 @@ public class UserCompnay {
         this.department = department;
     }
 
-    public UserCompnay() {
+    public UserCompany() {
     }
 
-    public UserCompnay(String address, String city, String lat, String lng, String postalCode, String state,
+    public UserCompany(String address, String city, String lat, String lng, String postalCode, String state,
             String department, String name,
             String title) {
         this.address = address;

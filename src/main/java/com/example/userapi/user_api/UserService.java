@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.userapi.user_api.model.User;
 import com.example.userapi.user_api.model.UserBank;
-import com.example.userapi.user_api.model.UserCompnay;
+import com.example.userapi.user_api.model.UserCompany;
+
 import com.example.userapi.user_api.model.user_detail;
 
 @Service
@@ -38,8 +39,8 @@ public class UserService {
         UserBank bankdetails = new UserBank("", "", "", "", "");
         UserBank ubank = UserbankRepo.save(bankdetails);
         System.out.println("uback done");
-        UserCompnay compnaydetails = new UserCompnay("", "", "", "", "", "", "", "", "");
-        UserCompnay CompanyData = userCompanyRepo.save(compnaydetails);
+        UserCompany compnaydetails = new UserCompany("", "", "", "", "", "", "", "", "");
+        UserCompany CompanyData = userCompanyRepo.save(compnaydetails);
         System.out.println("ucompany done");
         user.setuBank(ubank);
         user.setuDetail(updatedUserDetail);
@@ -47,7 +48,11 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public User findEmployeeById(Integer id) {
+    public User findUserById(Integer id) {
         return userRepo.findUserById(id);
+    }
+
+    public User updateEmployee(User user) {
+        return userRepo.save(user);
     }
 }

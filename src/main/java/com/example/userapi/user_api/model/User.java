@@ -144,7 +144,7 @@ public class User {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_Company_id", referencedColumnName = "id")
-    private UserCompnay uCompany;
+    private UserCompany uCompany;
 
     public user_detail getuDetail() {
         return uDetail;
@@ -158,11 +158,11 @@ public class User {
         this.uBank = uBank;
     }
 
-    public UserCompnay getuCompany() {
+    public UserCompany getuCompany() {
         return uCompany;
     }
 
-    public void setuCompany(UserCompnay uCompany) {
+    public void setuCompany(UserCompany uCompany) {
         this.uCompany = uCompany;
     }
 
