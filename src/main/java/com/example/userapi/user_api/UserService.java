@@ -52,7 +52,11 @@ public class UserService {
         return userRepo.findUserById(id);
     }
 
-    public User updateEmployee(User user) {
+    public User updateUser(User user) {
         return userRepo.save(user);
+    }
+
+    public void deleteUser(Integer id) {
+        userRepo.deleteById(id);
     }
 }
