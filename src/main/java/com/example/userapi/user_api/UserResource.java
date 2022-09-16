@@ -3,6 +3,7 @@ package com.example.userapi.user_api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.userapi.user_api.model.User;
@@ -22,6 +24,14 @@ public class UserResource {
 
     @Autowired
     private UserService userService;
+
+    @GetMapping
+    public List<User> getUserWithPaging(@RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "2") Integer pageSize) {
+
+        return userService.getUsersByPagination(pageNo, pageSize);
+
+    }
 
     @GetMapping("/all")
     public ResponseEntity<List<User>> getAllUser() {
@@ -42,9 +52,11 @@ public class UserResource {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<User> updateEmployee(@RequestBody User user) {
-        User updateUser = userService.updateUser(user);
-        return new ResponseEntity<>(updateUser, HttpStatus.OK);
+    public ResponseEntity<String> updateEmployee(@RequestBody User user) {
+        userService.updateUser(user);
+        // User updatedUser = userService.findUserById();
+        // return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        return new ResponseEntity<>("Update Successful", HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
